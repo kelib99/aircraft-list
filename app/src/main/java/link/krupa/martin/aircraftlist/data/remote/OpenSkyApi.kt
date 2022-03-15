@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface OpenSkyApi {
 
     @GET("states/all")
-    suspend fun getAllAircrafts(
+    suspend fun getAircraftList(
         @Query("lamin") lamin: String = Constants.CZECHIA_LAMIN,
         @Query("lomin") lomin: String = Constants.CZECHIA_LOMIN,
         @Query("lamax") lamax: String = Constants.CZECHIA_LAMAX,

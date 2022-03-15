@@ -9,8 +9,8 @@ import javax.inject.Inject
 class AircraftRepositoryImpl @Inject constructor(
     private val api : OpenSkyApi
 ) : AircraftRepository {
-    override suspend fun getAllAircraft(): List<AircraftDto> {
-        val stateDtoList = api.getAllAircrafts()
+    override suspend fun getAircraftList(): List<AircraftDto> {
+        val stateDtoList = api.getAircraftList()
         val nullableAircraftDtoList = stateDtoList.map { it.toAircraftDto() }
         return nullableAircraftDtoList.filterNotNull()
     }
