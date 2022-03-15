@@ -1,5 +1,6 @@
 package link.krupa.martin.aircraftlist.data.remote.dto
 
+import link.krupa.martin.aircraftlist.domain.model.Aircraft
 import java.lang.Exception
 
 /**
@@ -106,5 +107,19 @@ data class AircraftDto(
         result = 31 * result + spi.hashCode()
         result = 31 * result + positionSource
         return result
+    }
+
+    fun toAircraft() : Aircraft {
+        return Aircraft(
+            icao24 = icao24,
+            callsign = callsign,
+            originCountry = originCountry,
+            longitude = longitude,
+            latitude = latitude,
+            baroAltitude = baroAltitude,
+            onGround = onGround,
+            velocity = velocity,
+            trueTrack = trueTrack
+        )
     }
 }
