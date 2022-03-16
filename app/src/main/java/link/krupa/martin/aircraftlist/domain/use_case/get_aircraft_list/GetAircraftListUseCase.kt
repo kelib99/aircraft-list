@@ -14,9 +14,8 @@ import javax.inject.Inject
 
 class GetAircraftListUseCase @Inject constructor(
     private val repository: AircraftRepository,
-    private val context : Context
 ) {
-    operator fun invoke() : Flow<Resource<List<Aircraft>>> = flow {
+    operator fun invoke(context: Context) : Flow<Resource<List<Aircraft>>> = flow {
         try {
             if(!Device.isOnline(context)) {
                 emit(Resource.Offline())
