@@ -36,7 +36,9 @@ fun AircraftListTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Comp
         LightColorPalette
     }
     CompositionLocalProvider(
-        LocalSpacing provides Spacing())
+        LocalSpacing provides Spacing(),
+        LocalFontSize provides FontSize()
+    )
     {
         MaterialTheme(
             colors = colors,
