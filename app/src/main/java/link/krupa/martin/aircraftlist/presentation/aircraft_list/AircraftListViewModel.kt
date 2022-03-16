@@ -22,6 +22,9 @@ class AircraftListViewModel @Inject constructor(
     private val _state = mutableStateOf(AircraftListState())
     val state: State<AircraftListState> = _state
 
+    init {
+        getAircraftList()
+    }
 
     private fun getAircraftList() {
         getAircraftListUseCase(getContext()).onEach { result ->
