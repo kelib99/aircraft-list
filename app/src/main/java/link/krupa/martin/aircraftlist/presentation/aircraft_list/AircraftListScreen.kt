@@ -33,7 +33,7 @@ fun AircraftListScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            items(state.aircraftList) { aircraft ->
+            items(state.aircraftList ?: emptyList()) { aircraft ->
                 AircraftListItem(
                     aircraft = aircraft,
                     onItemClick = {

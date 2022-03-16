@@ -19,14 +19,10 @@ class AircraftListViewModel @Inject constructor(
     private val getAircraftListUseCase: GetAircraftListUseCase
 ) : AndroidViewModel(app) {
 
-    private val _state = mutableStateOf(AircraftListState())
+    private val _state = mutableStateOf(AircraftListState(isLoading = true))
     val state: State<AircraftListState> = _state
 
-    init {
-        getAircraftList()
-    }
-
-    private fun getAircraftList() {
+    fun getAircraftList() {
         getAircraftListUseCase(getContext()).onEach { result ->
             when (result) {
                 is Resource.Success -> {
@@ -36,7 +32,10 @@ class AircraftListViewModel @Inject constructor(
                     _state.value = AircraftListState(error = result.message ?: "")
                 }
                 is Resource.Loading -> {
-                    _state.value = AircraftListState(isLoading =  true)
+                    //show loading status only if there is no data cached
+                    if(_state.value.aircraftList == null) {
+                        _state.value = AircraftListState(isLoading = true)
+                    }
                 }
 
                 is Resource.Offline -> {

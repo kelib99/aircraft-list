@@ -4,6 +4,6 @@ import link.krupa.martin.aircraftlist.domain.model.Aircraft
 
 data class AircraftListState(
     val isLoading : Boolean = false,
-    val aircraftList : List<Aircraft> = emptyList(),
+    val aircraftList : List<Aircraft>? = null,
     val error : String = ""
 )
