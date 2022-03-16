@@ -18,20 +18,20 @@ fun StateDto.toAircraftDto(): AircraftDto? {
             icao24 = this[0] as String,
             callsign = this[1] as String?,
             originCountry = this[2] as String,
-            timePosition = this[3] as Long?,
-            lastContact = this[4] as Long,
-            longitude = this[5] as Float?,
-            latitude = this[6] as Float?,
-            baroAltitude = this[7] as Float?,
+            timePosition = this[3] as Double?,
+            lastContact = this[4] as Double,
+            longitude = this[5] as Double?,
+            latitude = this[6] as Double?,
+            baroAltitude = this[7] as Double?,
             onGround = this[8] as Boolean,
-            velocity = this[9] as Float?,
-            trueTrack = this[10] as Float?,
-            verticalRate = this[11] as Float?,
-            sensors = this[12] as IntArray,
-            geoAltitude = this[13] as Float?,
+            velocity = this[9] as Double?,
+            trueTrack = this[10] as Double?,
+            verticalRate = this[11] as Double?,
+            sensors = this[12] as IntArray?,
+            geoAltitude = this[13] as Double?,
             squawk = this[14] as String?,
             spi = this[15] as Boolean,
-            positionSource = this[16] as Int
+            positionSource = this[16] as Double
         )
     } catch (e: Exception) {
         e.printStackTrace()
@@ -45,21 +45,35 @@ data class AircraftDto(
     val icao24: String,
     val callsign: String?,
     val originCountry: String,
-    val timePosition: Long?,
-    val lastContact: Long,
-    val longitude: Float?,
-    val latitude: Float?,
-    val baroAltitude: Float?,
+    val timePosition: Double?,
+    val lastContact: Double,
+    val longitude: Double?,
+    val latitude: Double?,
+    val baroAltitude: Double?,
     val onGround: Boolean,
-    val velocity: Float?,
-    val trueTrack: Float?,
-    val verticalRate: Float?,
-    val sensors: IntArray,
-    val geoAltitude: Float?,
+    val velocity: Double?,
+    val trueTrack: Double?,
+    val verticalRate: Double?,
+    val sensors: IntArray?,
+    val geoAltitude: Double?,
     val squawk: String?,
     val spi: Boolean,
-    val positionSource: Int
+    val positionSource: Double
 ) {
+
+    fun toAircraft() : Aircraft {
+        return Aircraft(
+            icao24 = icao24,
+            callsign = callsign,
+            originCountry = originCountry,
+            longitude = longitude,
+            latitude = latitude,
+            baroAltitude = baroAltitude,
+            onGround = onGround,
+            velocity = velocity,
+            trueTrack = trueTrack
+        )
+    }
     //equals and hasCode must be generated because of sensors value of type IntArray
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -105,21 +119,7 @@ data class AircraftDto(
         result = 31 * result + (geoAltitude?.hashCode() ?: 0)
         result = 31 * result + (squawk?.hashCode() ?: 0)
         result = 31 * result + spi.hashCode()
-        result = 31 * result + positionSource
+        result = 31 * result + positionSource.hashCode()
         return result
-    }
-
-    fun toAircraft() : Aircraft {
-        return Aircraft(
-            icao24 = icao24,
-            callsign = callsign,
-            originCountry = originCountry,
-            longitude = longitude,
-            latitude = latitude,
-            baroAltitude = baroAltitude,
-            onGround = onGround,
-            velocity = velocity,
-            trueTrack = trueTrack
-        )
     }
 }

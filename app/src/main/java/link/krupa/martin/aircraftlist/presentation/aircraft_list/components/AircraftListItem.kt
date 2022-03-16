@@ -15,7 +15,7 @@ import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
 @Composable
 fun AircraftListItem(
     aircraft: Aircraft,
-    onItemClick : (Aircraft) -> Unit
+    onItemClick: (Aircraft) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -24,9 +24,14 @@ fun AircraftListItem(
             .clickable { onItemClick(aircraft) },
         horizontalArrangement = Arrangement.SpaceBetween,
 
-    ) {
+        ) {
         Text(
-            text = aircraft.callsign ?: stringResource(R.string.NA),
+            text =
+            if (aircraft.callsign.isNullOrEmpty()) {
+                stringResource(R.string.NA)
+            } else {
+                aircraft.callsign
+            },
             style = MaterialTheme.typography.body1,
             overflow = TextOverflow.Ellipsis
         )

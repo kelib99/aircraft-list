@@ -1,7 +1,7 @@
 package link.krupa.martin.aircraftlist.data.remote
 
 import link.krupa.martin.aircraftlist.common.Constants
-import link.krupa.martin.aircraftlist.data.remote.dto.StateDto
+import link.krupa.martin.aircraftlist.data.remote.dto.StateAllDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,5 +13,5 @@ interface OpenSkyApi {
         @Query("lomin") lomin: String = Constants.CZECHIA_LOMIN,
         @Query("lamax") lamax: String = Constants.CZECHIA_LAMAX,
         @Query("lomax") lomax: String = Constants.CZECHIA_LOMAX
-    ) : List<StateDto>
+    ) : StateAllDto
 }
