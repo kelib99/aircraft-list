@@ -5,4 +5,7 @@
     <string name="error_unexpected">An unexpected error occurred</string>
     <string name="server_unreachable">Couldn´t reach the server</string>
     <string name="NA">N/A</string>
+
+    <string name="bottom_nav_list_name">List</string>
+    <string name="bottom_nav_map_name">Map</string>
 </resources>
