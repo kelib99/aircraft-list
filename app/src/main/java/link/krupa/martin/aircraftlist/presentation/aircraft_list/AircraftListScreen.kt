@@ -14,15 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import link.krupa.martin.aircraftlist.presentation.Screen
+import link.krupa.martin.aircraftlist.domain.model.Aircraft
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.components.AircraftListItem
 import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
 
 @Composable
 fun AircraftListScreen(
-    navController: NavController,
-    viewModel: AircraftListViewModel = hiltViewModel()
+    viewModel: AircraftListViewModel = hiltViewModel(),
+    onItemClick : (Aircraft) -> Unit
 ) {
     val state = viewModel.state.value
     Box(
@@ -37,7 +36,7 @@ fun AircraftListScreen(
                 AircraftListItem(
                     aircraft = aircraft,
                     onItemClick = {
-                        navController.navigate(Screen.AircraftMapScreen.route + "/${aircraft.icao24}")
+                        onItemClick(aircraft)
                     })
             }
 
