@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pilulka Sky</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="error_unexpected">An unexpected error occurred</string>
+    <string name="server_unreachable">Couldn´t reach the server</string>
+    <string name="NA">N/A</string>
+
+    <string name="bottom_nav_list_name">List</string>
+    <string name="bottom_nav_map_name">Map</string>
+
+    <string name="origin_country">Origin country:&#160;</string>
+</resources>
