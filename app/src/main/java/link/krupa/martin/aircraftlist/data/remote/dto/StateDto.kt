@@ -69,6 +69,7 @@ data class AircraftDto(
             longitude = longitude,
             latitude = latitude,
             baroAltitude = baroAltitude,
+            verticalRate = verticalRate,
             onGround = onGround,
             velocity = velocity,
             trueTrack = trueTrack

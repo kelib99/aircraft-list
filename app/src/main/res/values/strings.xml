@@ -8,4 +8,6 @@
 
     <string name="bottom_nav_list_name">List</string>
     <string name="bottom_nav_map_name">Map</string>
+
+    <string name="origin_country">Origin country:&#160;</string>
 </resources>

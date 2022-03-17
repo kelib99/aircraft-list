@@ -1,4 +1,4 @@
-package link.krupa.martin.aircraftlist
+package link.krupa.martin.aircraftlist.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,9 +15,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import link.krupa.martin.aircraftlist.R
 import link.krupa.martin.aircraftlist.common.Constants
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.AircraftListScreen
 import link.krupa.martin.aircraftlist.presentation.common.AircraftListViewModel
@@ -29,6 +31,7 @@ import link.krupa.martin.aircraftlist.presentation.ui.theme.fontSize
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<AircraftListViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -86,15 +89,18 @@ fun TopBar() {
 
 
 @Composable
-fun Tabs(tabs: List<TabItem>) {
-    var tabIndex by remember { mutableStateOf(0) }
+fun Tabs(
+    tabs: List<TabItem>,
+) {
     Column {
+        val viewModel: MainActivityViewModel = viewModel()
+        val state = viewModel.state.value
         TabRow(
-            selectedTabIndex = tabIndex,
+            selectedTabIndex = state.currentTabIndex,
             backgroundColor = MaterialTheme.colors.primary,
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
-                    Modifier.tabIndicatorOffset(tabPositions[tabIndex])
+                    Modifier.tabIndicatorOffset(tabPositions[state.currentTabIndex])
                 )
             }
         ) {
@@ -107,14 +113,14 @@ fun Tabs(tabs: List<TabItem>) {
                         )
                     },
                     text = { Text(text = tab.title) },
-                    selected = tabIndex == index,
-                    onClick = { tabIndex = index }
+                    selected = state.currentTabIndex == index,
+                    onClick = { viewModel.changeTabIndex(index) }
                 )
             }
         }
-        when (tabIndex) {
-            0 -> AircraftListScreen {tabIndex = 1}
-            1 -> AircraftMapScreen { tabIndex = 0 }
+        when (state.currentTabIndex) {
+            0 -> AircraftListScreen { viewModel.changeTabIndex(1) }
+            1 -> AircraftMapScreen { viewModel.changeTabIndex(0) }
         }
     }
 }

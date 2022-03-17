@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import link.krupa.martin.aircraftlist.domain.model.Aircraft
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.components.AircraftListItem
+import link.krupa.martin.aircraftlist.presentation.common.AircraftListViewModel
 import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
 
 @Composable

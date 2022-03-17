@@ -8,6 +8,7 @@ data class Aircraft(
     val longitude: Double?,
     val latitude: Double?,
     val baroAltitude: Double?,
+    val verticalRate : Double?,
     val onGround: Boolean,
     val velocity: Double?,
     val trueTrack: Double?,
