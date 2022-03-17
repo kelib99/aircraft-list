@@ -20,7 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import link.krupa.martin.aircraftlist.common.Constants
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.AircraftListScreen
-import link.krupa.martin.aircraftlist.presentation.aircraft_list.AircraftListViewModel
+import link.krupa.martin.aircraftlist.presentation.common.AircraftListViewModel
 import link.krupa.martin.aircraftlist.presentation.aircraft_map.AircraftMapScreen
 import link.krupa.martin.aircraftlist.presentation.common.components.TabItem
 import link.krupa.martin.aircraftlist.presentation.ui.theme.AircraftListTheme
@@ -58,7 +58,9 @@ fun MainScreen() {
         TabItem.AircraftList(context),
         TabItem.AircraftMap(context)
     )
+    val scaffoldState = rememberScaffoldState()
     Scaffold(
+        scaffoldState = scaffoldState,
         topBar = { TopBar() },
         backgroundColor = MaterialTheme.colors.background
     ) {
