@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import link.krupa.martin.aircraftlist.domain.model.Aircraft
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.components.AircraftListItem
 import link.krupa.martin.aircraftlist.presentation.common.AircraftListViewModel
 import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
@@ -22,7 +21,6 @@ import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
 @Composable
 fun AircraftListScreen(
     viewModel: AircraftListViewModel = hiltViewModel(),
-    onItemClick : (Aircraft) -> Unit
 ) {
     val state = viewModel.state.value
     Box(
@@ -35,10 +33,8 @@ fun AircraftListScreen(
         ) {
             items(state.aircraftList ?: emptyList()) { aircraft ->
                 AircraftListItem(
-                    aircraft = aircraft,
-                    onItemClick = {
-                        onItemClick(aircraft)
-                    })
+                    aircraft = aircraft
+                )
             }
 
         }

@@ -1,6 +1,5 @@
 package link.krupa.martin.aircraftlist.presentation.aircraft_map
 
-import android.graphics.Point
 import androidx.activity.compose.BackHandler
 import link.krupa.martin.aircraftlist.presentation.common.AircraftListViewModel
 
@@ -15,16 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.rememberCameraPositionState
 import link.krupa.martin.aircraftlist.R
-import link.krupa.martin.aircraftlist.common.Constants
 import link.krupa.martin.aircraftlist.utils.BitmapUtils
 
 @Composable
@@ -68,7 +63,6 @@ fun AircraftMapScreen(
                             title = aircraft.callsign,
                             snippet = "${LocalContext.current.getString(R.string.origin_country)}${aircraft.originCountry}"
                         ) {
-
                         }
                     }
                 }

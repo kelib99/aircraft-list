@@ -119,7 +119,7 @@ fun Tabs(
             }
         }
         when (state.currentTabIndex) {
-            0 -> AircraftListScreen { viewModel.changeTabIndex(1) }
+            0 -> AircraftListScreen()
             1 -> AircraftMapScreen { viewModel.changeTabIndex(0) }
         }
     }

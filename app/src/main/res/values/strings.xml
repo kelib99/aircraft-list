@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aircraft List</string>
+    <string name="app_name">Pilulka Sky</string>
     <string name="title_activity_main">MainActivity</string>
 
     <string name="error_unexpected">An unexpected error occurred</string>

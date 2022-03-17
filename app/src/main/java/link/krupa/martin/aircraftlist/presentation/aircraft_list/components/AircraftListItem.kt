@@ -1,6 +1,5 @@
 package link.krupa.martin.aircraftlist.presentation.aircraft_list.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,13 +14,11 @@ import link.krupa.martin.aircraftlist.presentation.ui.theme.spacing
 @Composable
 fun AircraftListItem(
     aircraft: Aircraft,
-    onItemClick: (Aircraft) -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(MaterialTheme.spacing.medium)
-            .clickable { onItemClick(aircraft) },
+            .padding(MaterialTheme.spacing.medium),
         horizontalArrangement = Arrangement.SpaceBetween,
 
         ) {
