@@ -79,7 +79,7 @@ fun TopBar() {
                 fontSize = MaterialTheme.fontSize.large
             )
         },
-        backgroundColor = MaterialTheme.colors.primaryVariant,
+        backgroundColor = MaterialTheme.colors.primary,
         contentColor = androidx.compose.ui.graphics.Color.White
     )
 }
