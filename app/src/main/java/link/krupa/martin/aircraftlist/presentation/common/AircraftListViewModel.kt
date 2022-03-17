@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import link.krupa.martin.aircraftlist.AircraftApplication
+import link.krupa.martin.aircraftlist.R
 import link.krupa.martin.aircraftlist.common.Resource
 import link.krupa.martin.aircraftlist.domain.use_case.get_aircraft_list.GetAircraftListUseCase
 import link.krupa.martin.aircraftlist.presentation.aircraft_list.AircraftListState
@@ -39,7 +41,10 @@ class AircraftListViewModel @Inject constructor(
                 }
 
                 is Resource.Offline -> {
-                    //TODO offline state
+                    if(_state.value.aircraftList == null) {
+                        _state.value = AircraftListState(error = getApplication<AircraftApplication>().getString(
+                            R.string.no_connection))
+                    }
                 }
             }
         }.launchIn(viewModelScope)
