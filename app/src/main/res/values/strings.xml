@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pilulka Sky</string>
-    <string name="title_activity_main">MainActivity</string>
+
+    <string name="no_connection">Internet is not available</string>
 
     <string name="error_unexpected">An unexpected error occurred</string>
     <string name="server_unreachable">Couldn´t reach the server</string>
